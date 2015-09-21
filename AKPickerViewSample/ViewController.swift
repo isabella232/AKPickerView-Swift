@@ -23,22 +23,13 @@ class ViewController: UIViewController, AKPickerViewDataSource, AKPickerViewDele
 
 		self.pickerView.font = UIFont(name: "HelveticaNeue-Light", size: 20)!
 		self.pickerView.highlightedFont = UIFont(name: "HelveticaNeue", size: 20)!
-		self.pickerView.interitemSpacing = 20.0
-		self.pickerView.viewDepth = 1000.0
-		self.pickerView.pickerViewStyle = .Flat
+		self.pickerView.pickerViewStyle = .Wheel
+
 		self.pickerView.maskDisabled = false
         self.pickerView.highlightedTextColor = UIColor.blueColor()
 		self.pickerView.reloadData()
-        
-        leftArrow.hidden = true
 	}
 
-    @IBAction func scrollToLeft(sender: AnyObject) {
-        pickerView.selectItem(pickerView.selectedItem - 1, animated: true)
-    }
-    @IBAction func scrollToRight(sender: AnyObject) {
-        pickerView.selectItem(pickerView.selectedItem + 1, animated: true)
-    }
 	// MARK: - AKPickerViewDataSource
 
 	func numberOfItemsInPickerView(pickerView: AKPickerView) -> Int {
@@ -64,9 +55,7 @@ class ViewController: UIViewController, AKPickerViewDataSource, AKPickerViewDele
 	// MARK: - AKPickerViewDelegate
 
 	func pickerView(pickerView: AKPickerView, didSelectItem item: Int) {
-        leftArrow.hidden = item == 0
-        rigthArrow.hidden = item == (self.titles.count - 1)
-		println("Your favorite city is \(self.titles[item])")
+		print("Your favorite city is \(self.titles[item])")
 	}
 
 	/*
